@@ -1,7 +1,6 @@
-# Mvc crud demos
+# OAuth demo with mvc5
 
 ## features
 
-- basic crud process
-- basic form support
+- basic auth demo
 
