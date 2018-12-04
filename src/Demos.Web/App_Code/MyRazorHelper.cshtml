@@ -1,0 +1,28 @@
+﻿@functions
+{
+    public static string GetBasicPath()
+    {
+    //todo switch with cdn, etc...
+        var basic = "~/Content/libs/basic";
+        return GetPath(basic);
+    }
+    
+    public static string GetPath(string path)
+    {
+        var absolutePath = VirtualPathUtility.ToAbsolute(path);
+        return absolutePath;
+    }
+
+    public static string GetLayoutPath()
+    {
+        var layout = "";
+        //todo switch by context
+        layout = "~/Views/Shared/_Basic/_BasicLayout.cshtml";
+        return layout;
+    }
+
+    public static string GetParams(string key)
+    {
+        return HttpContext.Current.Request.Params[key];
+    }
+}
