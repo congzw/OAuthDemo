@@ -1,0 +1,37 @@
+﻿@using Demos.Web.Models
+@{
+    var userInfo = GetUserInfo();
+}
+@functions {
+    private UserInfo GetUserInfo()
+    {
+        var currentUser = OAuthContextHelper.CurrentUser;
+        if (currentUser != null)
+        {
+            return currentUser;
+        }
+        
+        var userInfo = new UserInfo();
+        userInfo.UserId = string.Empty;
+        userInfo.Username = "未知用户";
+        userInfo.HeadUrl = Url.Content("~/Content/images/user_anonymous.png");
+        return userInfo;
+    }
+}
+
+<h2>用户信息</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div>@userInfo.UserId</div>
+        <div>@userInfo.Username</div>
+        <div>@userInfo.CreateDate.ToFormat()</div>
+        <div>
+            <img src="@userInfo.HeadUrl" alt="" style="height: 64px; width: 64px;" />
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h2>...</h2>
+    </div>
+</div>
+

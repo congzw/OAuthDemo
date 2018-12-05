@@ -5,6 +5,12 @@ namespace Demos.Common
 {
     public static class ObjectExtensions
     {
+        public static bool IsDefault<T>(this T instance)
+        {
+            var value = default(T);
+            return Equals(instance, value);
+        }
+
         /// <summary>
         /// 保证不是默认值
         /// </summary>
