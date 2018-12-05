@@ -37,23 +37,21 @@ namespace Demos.Web.Controllers
                 var currentUser = githubOAuthApi.GetCurrentUser(accessTokenDto.access_token, accessTokenDto.token_type);
                 if (currentUser != null)
                 {
-                    //"login": "congzw",
-                    // "id": 8489587,
-                    // "node_id": "MDQ6VXNlcjg0ODk1ODc=",
-                    // "avatar_url": "https://avatars1.githubusercontent.com/u/8489587?v=4",
+                    //"login": "foo",
+                    // "id": foo,
+                    // "node_id": "foo",
+                    // "avatar_url": "foo",
                     // ...
                     var userInfo = new UserInfo() { HeadUrl = currentUser.avatar_url, UserId = currentUser.id, Username = currentUser.login };
                     DemoHelper.CurrentUser = userInfo;
-                    DemoHelper.CurrentResult = new AuthorizeResult() { Success = true, Message = "Success Authorized At: " + userInfo.CreateDate};
                 }
             }
             return RedirectToAction("Index");
         }
 
-        public ActionResult Clear()
+        public ActionResult Reset()
         {
             DemoHelper.CurrentUser = null;
-            DemoHelper.CurrentResult = null;
             return RedirectToAction("Index");
         }
     }

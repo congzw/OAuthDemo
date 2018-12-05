@@ -5,7 +5,7 @@
 @functions {
     private UserInfo GetUserInfo()
     {
-        var currentUser = OAuthContextHelper.CurrentUser;
+        var currentUser = DemoHelper.CurrentUser;
         if (currentUser != null)
         {
             return currentUser;
@@ -13,25 +13,39 @@
         
         var userInfo = new UserInfo();
         userInfo.UserId = string.Empty;
-        userInfo.Username = "未知用户";
+        userInfo.Username = "Unknown";
         userInfo.HeadUrl = Url.Content("~/Content/images/user_anonymous.png");
         return userInfo;
     }
 }
 
-<h2>用户信息</h2>
+<h2>UserInfo</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <div>@userInfo.UserId</div>
-        <div>@userInfo.Username</div>
-        <div>@userInfo.CreateDate.ToFormat()</div>
-        <div>
-            <img src="@userInfo.HeadUrl" alt="" style="height: 64px; width: 64px;" />
+    <div class="col-md-8">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="UserId" class="col-sm-2 control-label">UserId</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="UserId" disabled="disabled" value="@userInfo.UserId">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Username" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="Username" placeholder="Username" disabled="disabled" value="@userInfo.Username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Username" class="col-sm-2 control-label">CreateDate</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="CreateDate" placeholder="CreateDate" disabled="disabled" value="@userInfo.CreateDate.ToFormat()">
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-8">
-        <h2>...</h2>
+    <div class="col-md-4">
+        <img src="@userInfo.HeadUrl" id="HeadUrl" alt="" style="height: 128px; width: 128px;" class="img-thumbnail" />
     </div>
 </div>
 
